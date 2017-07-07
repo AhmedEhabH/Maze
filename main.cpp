@@ -5,6 +5,12 @@
 #include <windows.h>
 #include <conio.h>
 
+#define KB_UP 72
+#define KB_DOWN 80
+#define KB_LEFT 75
+#define KB_RIGHT 77
+#define KB_ESCAPE 27
+
 using namespace std;
 
 //Function Prototype
@@ -13,7 +19,8 @@ void gotoXY (int , int );
 void Movement();
 
 //Global Variables
-char inputKey = {0};
+//char inputKey = {0};
+int inputKey = 0;
 int mapArrayOne [17][33] =
 {
     {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
@@ -91,15 +98,15 @@ void Movement()
         cout<<char(1);  //Fun Face
         xBefore = x;
         yBefore = y;
-        inputKey = _getch();
+        inputKey = getch();
 
-        if(inputKey == 'w' || inputKey == 'W')
+        if(inputKey == 'w' || inputKey == 'W' ||  inputKey == KB_UP) //Go To UP
             y -= 1;
-        else if(inputKey == 's' || inputKey == 'S')
+        else if(inputKey == 's' || inputKey == 'S' || inputKey == KB_DOWN) //Go To Down
             y += 1;
-        else if(inputKey == 'a' || inputKey == 'A')
+        else if(inputKey == 'a' || inputKey == 'A' || inputKey == KB_LEFT) //Go To Left
             x -= 1;
-        else if(inputKey == 'd' || inputKey == 'D')
+        else if(inputKey == 'd' || inputKey == 'D' || inputKey == KB_RIGHT) //Go To Right
             x += 1;
 
         if (mapArrayOne[y][x] == 1)
